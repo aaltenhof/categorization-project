@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+  <head>
+    <title>My experiment</title>
+    <script src="jspsych-6.1.0/jspsych.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-survey-text.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
+    <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
+    <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
+    <script src="jquery-ui-1.11.4/external/jquery/jquery.js"></script>
+    <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
+  <script src="jspsych-6.1.0/plugins/jspsych-free-sort.js"></script>
+
+  </head>
+  <body></body>
+  <script>
+
+
+    /*welcome message */
+    var welcome = {
+      type: "html-keyboard-response",
+      stimulus: "Thank you for participating in this experiment. Press any key to begin."
+    }; 
+
+    /*Collect participant demographics*/
+    var age = {
+    type: "survey-text",
+    questions: [
+      {prompt: 'How old are you?', columns: 3, required: true, name: 'Age'},
+    ],
+  };
+
+  var page_1_options = ["Male", "Female", "Non-binary"];
+  var page_2_options = ["Right", "Left", "Ambidextrous"];
+
+  var multi_choice_block = {
+    type: "survey-multi-choice",
+    questions: [
+      {prompt: "What is your gender?", name: 'Gender', options: page_1_options, required:true}, 
+      {prompt: "What is your dominant hand?", name: 'Handed-ness', options: page_2_options, required: true}
+    ],
+  };
+
+    /* Pre-Instructions */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will shown a collection of images over two slides. These images depict things from the alien planet. Below each image is the word that the aliens use for that object. You will have a minute for each slide to familiarize yourself with the objects and words. Press any key when you are ready to begin."
+    };
+
+    var ran = Math.random();
+
+    /* Images Set 1 */
+    var img1 = {
+      type: 'image-keyboard-response',
+      prompt: "",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: function stimRan1() {
+        if (ran <= .16) {
+        return "them/them1.png"
+        } else if (ran <= .33) {
+          return "them/them3.png"
+        } else if (ran <= .50) {
+            return "them/them5.png"
+        } else if (ran <= .66) {
+            return "them/them7.png"
+        } else if (ran <= .82) {
+            return "them/them7.png"
+        } else {
+        return "them/them11.png"
+        }
+      },
+      choices: [' ']
+    };
+
+      /* Images Set 2 */
+      var img2 = {
+      type: 'image-keyboard-response',
+      prompt: "",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: function stimRan1() {
+        if (ran <= .16) {
+        return "them/them2.png"
+        } else if (ran <= .33) {
+          return "them/them4.png"
+        } else if (ran <= .50) {
+            return "them/them6.png"
+        } else if (ran <= .66) {
+            return "them/them8.png"
+        } else if (ran <= .82) {
+            return "them/them10.png"
+        } else {
+        return "them/them12.png"
+        }
+      },
+      choices: [' ']
+    };
+
+      /* Interactions */
+      var img3 = {
+      type: 'image-keyboard-response',
+      prompt: "Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: "inter.png",
+      choices: [' ']
+    };
+
+    /*Categorization task*/
+    var trial = {
+      type: 'free-sort',
+      stimuli: ["cir2/gorp2.png","cir2/sibnit2.png","cir2/fincur2.png","cir2/quaddles2.png", "cir2/rizb2.png","cir2/moyi2.png", "cir2/bluko2.png", "cir2/snater2.png", "cir2/dak2.png","cir2/pov2.png","cir2/monim2.png","cir2/vidri2.png","cir2/siba2.png","cir2/ruxe2.png", "cir2/plinket2.png", "cir2/fiwi2.png", "cir2/oorm2.png", "cir2/obah2.png"],
+      prompt: "Click and drag the images below to sort them into groups however you see fit. You can make as few or as many groups as you like, with as few or as many items as you like. To create a group, simply ensure that all the images you want to be in that group are touching. (It’s a good idea to make them overlap to be sure of this.)",
+      sort_area_height: 700,
+      sort_area_width: 1375,
+      stim_height: 200,
+      stim_width: 200
+    }
+
+
+    /* start the experiment */
+    jsPsych.init({
+      timeline: [welcome, age, multi_choice_block, instructions, img1, img2, img3, trial],
+      on_finish: function(){jsPsych.data.displayData();}
+    });
+    
+  </script>
