@@ -6,8 +6,8 @@
     <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
     <script src="jspsych-6.1.0/plugins/jspsych-survey-text.js"></script>
     <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
+    <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
     <link href="jspsych-6.1.0/css/jspsych.css" rel="stylesheet" type="text/css"></link>
-    <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>  
     <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
     <script src="jquery-ui-1.11.4/external/jquery/jquery.js"></script>
     <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
@@ -37,7 +37,7 @@
   <script>
 
 
-  /* *************LAB BOILERPLATE (added by kschuler)*********************/
+      /* *************LAB BOILERPLATE (added by kschuler)********************* */
 
     // location of the lab's runs datatable
     var runs = 'https://experiments.childlanglab.com/update_run.html'
@@ -50,7 +50,7 @@
     jsPsych.data.addProperties(
       {
         random_id: randomid,
-        condition: "1"
+        condition: "7"
       }
     );
 
@@ -101,8 +101,7 @@
     var welcome = {
       type: "html-keyboard-response",
       stimulus: "Thank you for participating in this experiment. Press any key to begin."
-    };
-    
+    }; 
 
     /*Collect participant demographics*/
     var age = {
@@ -123,23 +122,13 @@
     ],
   };
 
-/* Pre-Instructions */
-var instructions = {
+    /* Pre-Instructions */
+    var instructions = {
       type: "html-keyboard-response",
-      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. Above each image is the word that the aliens use for that object. You will have a minute for each slide to familiarize yourself with the objects and words. Press any key when you are ready to begin."
-    }; 
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. You will have a minute for each slide to familiarize yourself with the objects. Press any key when you are ready to begin."
+    };
 
     var ran = Math.random();
-    
-      /* Interactions */
-    var img3 = {
-      type: 'image-keyboard-response',
-      prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
-      trial_duration: 60000,
-      response_ends_trial: false,
-      stimulus: "inter.png",
-      choices: [' ']
-    };
 
       /* Images Set 1 */
     var img1 = {
@@ -149,17 +138,17 @@ var instructions = {
         response_ends_trial: false,
         stimulus: function stimRan1() {
         if (ran <= .16) {
-        return "lab2.png"
+        return "pic1.png"
         } else if (ran <= .33) {
-          return "lab4.png"
+          return "pic3.png"
         } else if (ran <= .50) {
-            return "lab6.png"
+            return "pic5.png"
         } else if (ran <= .66) {
-            return "lab8.png"
+            return "pic7.png"
         } else if (ran <= .82) {
-            return "lab10.png"
+            return "pic9.png"
         } else {
-        return "lab12.png"
+        return "pic11.png"
         }
       },
       choices: [' ']
@@ -173,32 +162,41 @@ var instructions = {
       response_ends_trial: false,
       stimulus: function stimRan1() {
         if (ran <= .16) {
-        return "lab1.png"
+        return "pic2.png"
         } else if (ran <= .33) {
-          return "lab3.png"
+          return "pic4.png"
         } else if (ran <= .50) {
-            return "lab5.png"
+            return "pic6.png"
         } else if (ran <= .66) {
-            return "lab7.png"
+            return "pic8.png"
         } else if (ran <= .82) {
-            return "lab9.png"
+            return "pic10.png"
         } else {
-        return "lab11.png"
+        return "pic12.png"
         }
       },
       choices: [' ']
     };
 
+      /* Interactions */
+      var img3 = {
+      type: 'image-keyboard-response',
+      prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: "inter.png",
+      choices: [' ']
+    };
 
-     /*Categorization task*/
-     var trial = {
+    /*Categorization task*/
+    var trial = {
       type: 'free-sort',
-      stimuli: ["cir1/gorp1.png","cir1/sibnit1.png","cir1/fincur1.png","cir1/quaddles1.png", "cir1/rizb1.png","cir1/moyi1.png", "cir1/bluko1.png", "cir1/snater1.png", "cir1/dak1.png","cir1/pov1.png","cir1/monim1.png","cir1/vidri1.png","cir1/siba1.png","cir1/ruxe1.png", "cir1/plinket1.png", "cir1/fiwi1.png", "cir1/oorm1.png", "cir1/obah1.png"],
-      prompt: "Click and drag the images below to sort them into the best and most natural groups.  A group is a set of things that go together by virtue of their participation in the same event or scenario. To create a group, simply ensure that all the images you want to be in that group are touching. (It’s a good idea to make them overlap to be sure of this.) When you're done, click the Continue button at the bottom.",
+      stimuli: ["cir/gorp.png","cir/sibnit.png","cir/fincur.png","cir/quaddles.png", "cir/rizb.png","cir/moyi.png", "cir/bluko.png", "cir/snater.png", "cir/dak.png","cir/pov.png","cir/monim.png","cir/vidri.png","cir/siba.png","cir/ruxe.png", "cir/plinket.png", "cir/fiwi.png", "cir/oorm.png", "cir/obah.png"],
+      prompt: "Click and drag the images below to sort them into the best and most natural groups.  A group is a set of things that go together by virtue of their participation in the same event or scenario. o create a group, simply ensure that all the images you want to be in that group are touching. (It’s a good idea to make them overlap to be sure of this.) When you're done, click the Continue button at the bottom.",
       sort_area_height: 700,
       sort_area_width: 1375,
-      stim_height: 200,
-      stim_width: 200
+      stim_height: 150,
+      stim_width: 150
     }
 
 
