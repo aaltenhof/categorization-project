@@ -147,31 +147,7 @@ var instructions = {
         prompt: " ",
         trial_duration: 60000,
         response_ends_trial: false,
-        stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "lab2.png"
-        } else if (ran <= .33) {
-          return "lab4.png"
-        } else if (ran <= .50) {
-            return "lab6.png"
-        } else if (ran <= .66) {
-            return "lab8.png"
-        } else if (ran <= .82) {
-            return "lab10.png"
-        } else {
-        return "lab12.png"
-        }
-      },
-      choices: [' ']
-    };
-
-      /* Images Set 2 */
-    var img2 = {
-      type: 'image-keyboard-response',
-      prompt: " ",
-      trial_duration: 60000,
-      response_ends_trial: false,
-      stimulus: function stimRan1() {
+        stimulus: ffunction stimRan1() {
         if (ran <= .16) {
         return "lab1.png"
         } else if (ran <= .33) {
@@ -184,6 +160,30 @@ var instructions = {
             return "lab9.png"
         } else {
         return "lab11.png"
+        }
+      },
+      choices: [' ']
+    };
+
+      /* Images Set 2 */
+    var img2 = {
+      type: 'image-keyboard-response',
+      prompt: " ",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: function stimRan2() {
+        if (ran <= .16) {
+        return "lab2.png"
+        } else if (ran <= .33) {
+          return "lab4.png"
+        } else if (ran <= .50) {
+            return "lab6.png"
+        } else if (ran <= .66) {
+            return "lab8.png"
+        } else if (ran <= .82) {
+            return "lab10.png"
+        } else {
+        return "lab12.png"
         }
       },
       choices: [' ']
