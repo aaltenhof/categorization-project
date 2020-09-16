@@ -127,65 +127,71 @@
     };
 
 
-    var ran = Math.random();
-
-    /* Images Set 1 */
-    var img1 = {
-      type: 'image-keyboard-response',
-      prompt: "",
-      trial_duration: 60000,
-      response_ends_trial: false,
-      stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "them/them1.png"
-        } else if (ran <= .33) {
-          return "them/them3.png"
-        } else if (ran <= .50) {
-            return "them/them5.png"
-        } else if (ran <= .66) {
-            return "them/them7.png"
-        } else if (ran <= .82) {
-            return "them/them7.png"
-        } else {
-        return "them/them11.png"
-        }
-      },
-      choices: [' ']
+       /* Pre-Instructions */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. You will have a minute for each slide to familiarize yourself with the objects. Press any key when you are ready to begin."
     };
 
-      /* Images Set 2 */
-      var img2 = {
-      type: 'image-keyboard-response',
-      prompt: "",
-      trial_duration: 60000,
-      response_ends_trial: false,
-      stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "them/them2.png"
+     var ran = Math.random();
+    var RandImg1 = function() {if (ran <= .16) {
+        return "them/them1.png";
         } else if (ran <= .33) {
-          return "them/them4.png"
-        } else if (ran <= .50) {
-            return "them/them6.png"
-        } else if (ran <= .66) {
-            return "them/them8.png"
-        } else if (ran <= .82) {
-            return "them/them10.png"
+          return "them/them3.png";
+        } else if (ran <= .50) {
+            return "them/them5.png";
+        } else if (ran <= .66) {
+            return "them/them7.png";
+        } else if (ran <= .82) {
+            return "them/them9.png";
         } else {
-        return "them/them12.png"
+        return "them/them11.png";
         }
-      },
-      choices: [' ']
     };
+
+    var RandImg2 = function () {
+        if (ran <= .16) {
+        return "them/them2.png";
+        } else if (ran <= .33) {
+          return "them/them4.png";
+        } else if (ran <= .50) {
+            return "them/them6.png";
+        } else if (ran <= .66) {
+            return "them/them8.png";
+        } else if (ran <= .82) {
+            return "them/them10.png";
+        } else {
+        return "them/them12.png";
+        }
+      };
 
       /* Interactions */
-      var img3 = {
+    var img3 = {
       type: 'image-keyboard-response',
       prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
       trial_duration: 60000,
-      stimulus_height: 650,
-      stimulus_width: 1300,
       response_ends_trial: false,
       stimulus: "inter.png",
+      choices: [' ']
+    };
+
+      /* Images Set 1 */
+    var img1 = {
+        type: 'image-keyboard-response',
+        prompt: " ",
+        trial_duration: 60000,
+        response_ends_trial: false,
+        stimulus:RandImg1,
+        choices: [' ']
+    };
+
+      /* Images Set 2 */
+    var img2 = {
+      type: 'image-keyboard-response',
+      prompt: " ",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: RandImg2,
       choices: [' ']
     };
 
@@ -208,3 +214,4 @@
     });
     
   </script>
+</html>
