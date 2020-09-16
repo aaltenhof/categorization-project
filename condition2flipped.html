@@ -128,7 +128,54 @@
       stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. You will have a minute for each slide to familiarize yourself with the objects. Press any key when you are ready to begin."
     };
 
-    var ran = Math.random();
+     /* Pre-Instructions */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. You will have a minute for each slide to familiarize yourself with the objects. Press any key when you are ready to begin."
+    };
+
+     var ran = Math.random();
+    var RandImg1 = function() {if (ran <= .16) {
+        return "pic1.png";
+        } else if (ran <= .33) {
+          return "pic3.png";
+        } else if (ran <= .50) {
+            return "pic5.png";
+        } else if (ran <= .66) {
+            return "pic7.png";
+        } else if (ran <= .82) {
+            return "pic9.png";
+        } else {
+        return "pic11.png";
+        }
+    };
+
+    var RandImg2 = function () {
+        if (ran <= .16) {
+        return "pic2.png";
+        } else if (ran <= .33) {
+          return "pic4.png";
+        } else if (ran <= .50) {
+            return "pic6.png";
+        } else if (ran <= .66) {
+            return "pic8.png";
+        } else if (ran <= .82) {
+            return "pic10.png";
+        } else {
+        return "pic12.png";
+        }
+      };
+
+    
+      /* Interactions */
+    var img3 = {
+      type: 'image-keyboard-response',
+      prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: "inter.png",
+      choices: [' ']
+    };
 
       /* Images Set 1 */
     var img1 = {
@@ -136,22 +183,8 @@
         prompt: " ",
         trial_duration: 60000,
         response_ends_trial: false,
-        stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "pic1.png"
-        } else if (ran <= .33) {
-          return "pic3.png"
-        } else if (ran <= .50) {
-            return "pic5.png"
-        } else if (ran <= .66) {
-            return "pic7.png"
-        } else if (ran <= .82) {
-            return "pic9.png"
-        } else {
-        return "pic11.png"
-        }
-      },
-      choices: [' ']
+        stimulus:RandImg1,
+        choices: [' ']
     };
 
       /* Images Set 2 */
@@ -160,31 +193,7 @@
       prompt: " ",
       trial_duration: 60000,
       response_ends_trial: false,
-      stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "pic2.png"
-        } else if (ran <= .33) {
-          return "pic4.png"
-        } else if (ran <= .50) {
-            return "pic6.png"
-        } else if (ran <= .66) {
-            return "pic8.png"
-        } else if (ran <= .82) {
-            return "pic10.png"
-        } else {
-        return "pic12.png"
-        }
-      },
-      choices: [' ']
-    };
-
-      /* Interactions */
-      var img3 = {
-      type: 'image-keyboard-response',
-      prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
-      trial_duration: 60000,
-      response_ends_trial: false,
-      stimulus: "inter.png",
+      stimulus: RandImg2,
       choices: [' ']
     };
 
@@ -207,3 +216,4 @@
     });
     
   </script>
+</html>
