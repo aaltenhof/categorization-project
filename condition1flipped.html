@@ -130,6 +130,37 @@ var instructions = {
     }; 
 
     var ran = Math.random();
+    var RandImg1 = function() {if (ran <= .16) {
+        return "lab1.png";
+        } else if (ran <= .33) {
+          return "lab3.png";
+        } else if (ran <= .50) {
+            return "lab5.png";
+        } else if (ran <= .66) {
+            return "lab7.png";
+        } else if (ran <= .82) {
+            return "lab9.png";
+        } else {
+        return "lab11.png";
+        }
+    };
+
+    var RandImg2 = function () {
+        if (ran <= .16) {
+        return "lab2.png";
+        } else if (ran <= .33) {
+          return "lab4.png";
+        } else if (ran <= .50) {
+            return "lab6.png";
+        } else if (ran <= .66) {
+            return "lab8.png";
+        } else if (ran <= .82) {
+            return "lab10.png";
+        } else {
+        return "lab12.png";
+        }
+      };
+
     
       /* Interactions */
     var img3 = {
@@ -147,22 +178,8 @@ var instructions = {
         prompt: " ",
         trial_duration: 60000,
         response_ends_trial: false,
-        stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "lab2.png"
-        } else if (ran <= .33) {
-          return "lab4.png"
-        } else if (ran <= .50) {
-            return "lab6.png"
-        } else if (ran <= .66) {
-            return "lab8.png"
-        } else if (ran <= .82) {
-            return "lab10.png"
-        } else {
-        return "lab12.png"
-        }
-      },
-      choices: [' ']
+        stimulus:RandImg1,
+        choices: [' ']
     };
 
       /* Images Set 2 */
@@ -171,21 +188,7 @@ var instructions = {
       prompt: " ",
       trial_duration: 60000,
       response_ends_trial: false,
-      stimulus: function stimRan1() {
-        if (ran <= .16) {
-        return "lab1.png"
-        } else if (ran <= .33) {
-          return "lab3.png"
-        } else if (ran <= .50) {
-            return "lab5.png"
-        } else if (ran <= .66) {
-            return "lab7.png"
-        } else if (ran <= .82) {
-            return "lab9.png"
-        } else {
-        return "lab11.png"
-        }
-      },
+      stimulus: RandImg2,
       choices: [' ']
     };
 
@@ -209,3 +212,4 @@ var instructions = {
     });
     
   </script>
+</html>
