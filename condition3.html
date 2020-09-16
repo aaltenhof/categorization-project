@@ -123,68 +123,75 @@
     /* Pre-Instructions */
     var instructions = {
       type: "html-keyboard-response",
-      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images over. These images depict things from the alien planet. Above each image is the word that the aliens use for that object. You will have a minute for each slide to familiarize yourself with the objects and words. Press any key when you are ready to begin."
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images over. These images de
+      t things from the alien planet. Above each image is the word that the aliens use for that object. You will have a minute for each slide to familiarize yourself with the objects and words. Press any key when you are ready to begin."
     };
 
-            var ran = Math.random();
+    /* Pre-Instructions */
+    var instructions = {
+      type: "html-keyboard-response",
+      stimulus: "Welcome! You are on a mission to an alien planet and must acquaint yourself with the things you might encounter there. In a moment you will be shown a collection of images. These images depict things from the alien planet. You will have a minute for each slide to familiarize yourself with the objects. Press any key when you are ready to begin."
+    };
 
-/* Images Set 1 */
-var img1 = {
-  type: 'image-keyboard-response',
-  prompt: "",
-  trial_duration: 60000,
-  response_ends_trial: false,
-  stimulus: function stimRan1() {
-    if (ran <= .16) {
-    return "tax/tax1.png"
-    } else if (ran <= .33) {
-      return "tax/tax3.png"
-    } else if (ran <= .50) {
-        return "tax/tax5.png"
-    } else if (ran <= .66) {
-        return "tax/tax7.png"
-    } else if (ran <= .82) {
-        return "tax/tax7.png"
-    } else {
-    return "tax/tax11.png"
-    }
-  },
-  choices: [' ']
-};
+     var ran = Math.random();
+    var RandImg1 = function() {if (ran <= .16) {
+        return "tax/tax1.png";
+        } else if (ran <= .33) {
+          return "tax/tax3.png";
+        } else if (ran <= .50) {
+            return "tax/tax5.png";
+        } else if (ran <= .66) {
+            return "tax/tax7.png";
+        } else if (ran <= .82) {
+            return "tax/tax9.png";
+        } else {
+        return "tax/tax11.png";
+        }
+    };
 
-  /* Images Set 2 */
-  var img2 = {
-  type: 'image-keyboard-response',
-  prompt: "",
-  trial_duration: 60000,
-  response_ends_trial: false,
-  stimulus: function stimRan1() {
-    if (ran <= .16) {
-    return "tax/tax2.png"
-    } else if (ran <= .33) {
-      return "tax/tax4.png"
-    } else if (ran <= .50) {
-        return "tax/tax6.png"
-    } else if (ran <= .66) {
-        return "tax/tax8.png"
-    } else if (ran <= .82) {
-        return "tax/tax10.png"
-    } else {
-    return "tax/tax12.png"
-    }
-  },
-  choices: [' ']
-};
+    var RandImg2 = function () {
+        if (ran <= .16) {
+        return "tax/tax2.png";
+        } else if (ran <= .33) {
+          return "tax/tax4.png";
+        } else if (ran <= .50) {
+            return "tax/tax6.png";
+        } else if (ran <= .66) {
+            return "tax/tax8.png";
+        } else if (ran <= .82) {
+            return "tax/tax10.png";
+        } else {
+        return "tax/tax12.png";
+        }
+      };
 
       /* Interactions */
-      var img3 = {
+    var img3 = {
       type: 'image-keyboard-response',
       prompt: "<br>Sometimes the objects interact. Please familiarize yourself with how these interactions work.",
       trial_duration: 60000,
-      stimulus_height: 650,
-      stimulus_width: 1300,
       response_ends_trial: false,
       stimulus: "inter.png",
+      choices: [' ']
+    };
+
+      /* Images Set 1 */
+    var img1 = {
+        type: 'image-keyboard-response',
+        prompt: " ",
+        trial_duration: 60000,
+        response_ends_trial: false,
+        stimulus:RandImg1,
+        choices: [' ']
+    };
+
+      /* Images Set 2 */
+    var img2 = {
+      type: 'image-keyboard-response',
+      prompt: " ",
+      trial_duration: 60000,
+      response_ends_trial: false,
+      stimulus: RandImg2,
       choices: [' ']
     };
 
@@ -207,3 +214,4 @@ var img1 = {
     });
     
   </script>
+</html>
