@@ -47,7 +47,7 @@
     jsPsych.data.addProperties(
       {
         random_id: randomid,
-        condition: "1"
+        condition: "triad"
       }
     );
 
@@ -208,7 +208,7 @@ var test_block ={
 
      /* start the experiment */
      jsPsych.init({
-      timeline: [welcome, age, multi_choice_block, instructions, img1, img2, img3, test_block],
+      timeline: [consent,welcome, age, multi_choice_block, instructions, img1, img2, img3, test_block,labreq_end],
       on_finish: function(){jsPsych.data.displayData();}
     });
     
