@@ -12,9 +12,87 @@
     <script src="jquery-ui-1.11.4/jquery-ui.js"></script>
     <link rel="stylesheet" href="jquery-ui-1.11.4/jquery-ui.css">
 
+ <!-- plugins required for consent form and lab_end screen added by kschuler-->
+    <script src="../assets/js/jspsych-6.0.5/plugins/jspsych-image-button-response.js"></script>
+    <script src="../assets/js/jspsych-6.0.5/plugins/jspsych-external-html.js"></script>
+
+    <!-- library required for showing consent form (jquery) added by kschuler-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- library required for writing to our database added by kschuler -->
+    <script src="../childlanglab.js"></script>
+
+    <!-- make the instructions look nice -->
+    <style>
+      p {
+          max-width: 800px;
+          text-align: left;
+        }
+    </style>
+
   </head>
   <body></body>
   <script>
+
+
+  /* *************LAB BOILERPLATE (added by kschuler)*********************/
+
+    // location of the lab's runs datatable
+    var runs = 'https://experiments.childlanglab.com/update_run.html'
+
+    // get urlvars and randomid for saving data and runtime info
+    var urlvar = jsPsych.data.urlVariables();
+    var randomid = String(jsPsych.randomization.randomID(12))
+
+    // add some data to all trials
+    jsPsych.data.addProperties(
+      {
+        random_id: randomid,
+        condition: "triad"
+      }
+    );
+
+    // for writing runtime data and displaying the consent form
+    // make sure to comment out ChildLangLabRuntime() when testing locally
+
+    // function that check to make sure conset form is accepted
+    var check_consent = function(elem) {
+      if ($('#consent_checkbox').is(':checked')) {
+        console.log("checked");
+        return true;
+      }
+      else {
+        alert("If you wish to participate, you must check the box next to the statement 'I agree to participate in this study.'");
+        console.log("not checked");
+        return false;
+      }
+      return false;
+    };
+
+    // consent form trial
+    var consent = {
+      type:'external-html',
+      url: "gareth_consent_form.html",
+      cont_btn: "start",
+      check_fn: check_consent,
+      on_start: function(){
+        ChildLangLabRuntime(urlvar, randomid);
+      }
+    };
+
+    // the thanks screen at the end of the experiment
+    var labreq_end = {
+      type: 'image-button-response',
+      stimulus: '../assets/images/childlanglab-logo.png',
+      choices: ['End Experiment'],
+      prompt: "<p>Thanks for participating!</p><h3>"+randomid+"</h3>",
+      on_start: function(){
+        // ChildLangLabTrialData writes your trial data to the lab's database
+        // comment this out when you test locally
+        ChildLangLabTrialData('write_trialdata.php', jsPsych.data.get().ignore(['url']).json());
+      }
+    };
+/* *************END LAB BOILERPLATE (added by kschuler)********************* */
 
      /*welcome message */
     var welcome = {
@@ -131,7 +209,7 @@ var test_block ={
 
      /* start the experiment */
      jsPsych.init({
-      timeline: [welcome, age, multi_choice_block, instructions, img3, img1, img2, test_block],
+      timeline: [consent,welcome, age, multi_choice_block, instructions, img3, img1, img2, test_block, labreq_end],
       on_finish: function(){jsPsych.data.displayData();}
     });
     
