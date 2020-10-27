@@ -193,7 +193,7 @@
     var trial = {
       type: 'free-sort',
       stimuli: ["cir2/gorp2.png","cir2/sibnit2.png","cir2/fincur2.png","cir2/quaddles2.png", "cir2/rizb2.png","cir2/moyi2.png", "cir2/bluko2.png", "cir2/snater2.png", "cir2/dak2.png","cir2/pov2.png","cir2/monim2.png","cir2/vidri2.png","cir2/siba2.png","cir2/ruxe2.png", "cir2/plinket2.png", "cir2/fiwi2.png", "cir2/oorm2.png", "cir2/obah2.png"],
-      prompt: "Click and drag the images below to sort them into groups however you see fit. You can make as few or as many groups as you like, with as few or as many items as you like. To create a group, simply ensure that all the images you want to be in that group are touching. (It’s a good idea to make them overlap to be sure of this.) When you're done, click the Continue button at the bottom.",
+      prompt: "Click and drag the images below to sort them into groups however you see fit. You can make as few or as many groups as you like, with as few or as many items as you like. To create a group, simply ensure that all the images you want to be in that group are touching. (It is a good idea to make them overlap to be sure of this.) When you're done, click the Continue button at the bottom.",
       sort_area_height: 700,
       sort_area_width: 1375,
       stim_height: 200,
@@ -204,7 +204,7 @@
     /* start the experiment */
     jsPsych.init({
       timeline: [consent,welcome, age, multi_choice_block, instructions, img1, img2, img3, trial,labreq_end],
-      on_finish: function(){jsPsych.data.displayData();}
+      on_finish: function(){window.location = "https://app.prolific.co/submissions/complete?cc=210844DE";}
     });
     
   </script>
